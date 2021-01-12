@@ -16,9 +16,36 @@ mysqli_close($link);
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Obesity and Population by country</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
         <script src="js/showCountryObese.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                console.log("test");
+                $("#idCountry").change(function () {
+                    var id = $("#idCountry").val();
+                    console.log(id);
+                    $.ajax({
+                        type: "GET",
+                        url: "getCountryDetails.php",
+                        cache: false,
+                        dataType: "JSON",
+                        data: "id=" + id,
+                        success: function (response) {
+                            var message = "<tr><th>Population</th><th>Obese</th></tr>";
+                            for (i = 0; i < response.length; i++) {
+                                message += "<hr><tr><td>" + response[i].population + "</td>"
+                                        + "<td>" + response[i].obese + "</td></tr>";
+                            }
+                            $("#obeseTable").html(message);
+                        },
+                        error: function (obj, textStatus, errorThrown) {
+                            console.log("Error " + textStatus + ": " + errorThrown);
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
 
     <body>
