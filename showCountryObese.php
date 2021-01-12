@@ -24,13 +24,17 @@ mysqli_close($link);
                 console.log("test");
                 $("#idCountry").change(function () {
                     var id = $("#idCountry").val();
+                    var population = id.get('population');
+                    var obese = id.val('obese');
+                    console.log(population);
+                    console.log(obese);
                     console.log(id);
                     $.ajax({
                         type: "GET",
                         url: "getCountryDetails.php",
                         cache: false,
                         dataType: "JSON",
-                        data: "id=" + id,
+                        data: "id=" + id + "&population=" + population + "&obese=" + obese,
                         success: function (response) {
                             var message = "<tr><th>Population</th><th>Obese</th></tr>";
                             for (i = 0; i < response.length; i++) {

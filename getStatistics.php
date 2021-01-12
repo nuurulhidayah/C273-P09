@@ -1,6 +1,6 @@
 <?php
 
-include 'dbFunctions.php';
+include "dbFunctions.php";
 $query = "SELECT * FROM statistics";
 $result = mysqli_query($link, $query);
 
