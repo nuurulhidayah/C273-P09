@@ -10,7 +10,7 @@ $(document).ready(function () {
             success: function (response) {
                 var message = "<tr><th>Population</th><th>Obese</th></tr>";
                 for (i = 0; i < response.length; i++) {
-                    message += "<tr><td>" + response[i].population + "</td>"
+                    message += "<hr><tr><td>" + response[i].population + "</td>"
                             + "<td>" + response[i].obese + "</td></tr>";
                 }
                 $("#obeseTable").html(message);
