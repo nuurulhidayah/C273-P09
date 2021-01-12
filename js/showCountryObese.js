@@ -3,7 +3,7 @@ $(document).ready(function () {
         var id = $("#idCountry").val();
         $.ajax({
             type: "GET",
-            url: "http://localhost/C273/P09/getCountryDetails.php",
+            url: "getCountryDetails.php",
             cache: false,
             dataType: "JSON",
             data: "id=" + id,
