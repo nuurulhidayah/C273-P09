@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#idCountry").change(function () {
         var id = $("#idCountry").val();
+        console.log('id');
         $.ajax({
             type: "GET",
             url: "getCountryDetails.php",
@@ -10,7 +11,7 @@ $(document).ready(function () {
             success: function (response) {
                 var message = "<tr><th>Population</th><th>Obese</th></tr>";
                 for (i = 0; i < response.length; i++) {
-                    message += "<hr><tr><td>" + response[i].population + "</td>"
+                    message += "<tr><td>" + response[i].population + "</td>"
                             + "<td>" + response[i].obese + "</td></tr>";
                 }
                 $("#obeseTable").html(message);
